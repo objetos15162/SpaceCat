@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=menus
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ menu\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=menus()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ menu.\r\n\ \r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ animation()
+comment4.params=
+comment4.target=void\ scrollUpBackground()
+comment5.params=
+comment5.target=void\ scrollDownBackground()
+comment6.params=
+comment6.target=void\ scrollLeftBackground()
+comment7.params=
+comment7.target=void\ scrollRigthBackground()
+comment8.params=x\ y
+comment8.target=void\ positionBackground(int,\ int)
+comment9.params=
+comment9.target=void\ time()
+numComments=10
