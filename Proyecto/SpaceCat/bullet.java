@@ -9,15 +9,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class bullet extends Actor
 {
     private int position;
-    private Cat target;
+    private CatGame target;
+    
     /**
      * Act - do whatever the bullet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */ 
+     */
+   
+    public bullet()
+    {
+    }
     
-   protected void addedToWorld(World world)
-   {
-     target = getObjectsInRange(800, Cat.class).get(0);
+    protected void addedToWorld(World world)
+    {
+     target = getObjectsInRange(800, CatGame.class).get(0);
       
       double x = target.getX();
       double y = target.getY();
@@ -26,7 +31,7 @@ public class bullet extends Actor
       double y2 = getY();
       
       position = (int)( y2 - ( x2 * ( ( y2 - y ) / ( x2 - x ) ) ) ); 
-   }
+    }
     
     public void act() 
     {
@@ -48,7 +53,7 @@ public class bullet extends Actor
     
     public boolean hit()
     {
-        if(isTouching(Cat.class))
+        if(isTouching(CatGame.class))
         {
             target.health(-20);
             return true;

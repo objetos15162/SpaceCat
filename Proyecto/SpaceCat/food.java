@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class food here.
  * 
- * @author (your name) 
+ * @author (Jessica de Jesus Ortiz Tobias) 
  * @version (a version number or a date)
  */
 public class food extends Actor
@@ -18,14 +18,13 @@ public class food extends Actor
      */
     public void act() 
     {
-      
         setLocation(getX()-speed, getY());
         
         if(isAtEdge())
-        getWorld().removeObject(this);
-        
+        {
+            getWorld().removeObject(this);
+        }
         turn(1);
-        
     }    
     
     public void setValue(int health, int points)
@@ -48,7 +47,4 @@ public class food extends Actor
     {
         this.speed = speed;
     }
-    
-    
-    
 }

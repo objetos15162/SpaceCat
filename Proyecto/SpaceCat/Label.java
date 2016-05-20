@@ -25,6 +25,8 @@ public class Label extends Actor
     private int fontSize;
     private Color lineColor = Color.BLACK;
     private Color fillColor = Color.WHITE;
+    private int width;
+    private int height;
     
     private static final Color transparent = new Color(0,0,0,0);
 
@@ -90,13 +92,35 @@ public class Label extends Actor
         this.fillColor = fillColor;
         updateImage();
     }
-
+    
+    public boolean isOffScreen()//
+    {
+        if (getX() < 0 - width/2 || getX() >getWorld().getWidth()  + width/2 || 
+            getY() < 0 - height/2 || getY() > getWorld().getHeight() + height/2)
+        {
+          return true;
+        }
+        return false;
+    }
+    
+    public int getHeight()//
+    {
+        return fontSize;
+    }
+    
+    public int getWidth()//
+    {
+        return value.length() * fontSize;
+    }
+    
     /**
      * Update the image on screen to show the current value.
      */
     private void updateImage()
     {
-       GreenfootImage label = CustomFont.drawString(value, fillColor, "munro",fontSize);
-        setImage(label);
+       GreenfootImage label = CustomFont.drawString(value, fillColor, "PressStart2P",fontSize);
+       width= label.getWidth();
+       height= label.getHeight();
+       setImage(label);
     }
 }

@@ -9,109 +9,112 @@ public class Cat extends Actor
 {
     GifImage myGif = new GifImage("NyanCat.gif");
     
-    private Counter health;
-    private Counter points;
-    
     public Cat()
     {
-       
-    }
-    /**
-     * Act - do whatever the Cat wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    protected void addedToWorld(World world)
-    {
-        points = new Counter("Points: ");
-        getWorld().addObject(points,634,48);  
-        health = new Counter("Healt: ");
-        getWorld().addObject(health,334,48); 
-        health.setValue(100);
     }
     
     public void act() 
     {
         setImage(myGif.getCurrentImage());
-        
-        move();
-        
-        if(isTouching(food.class))
-           {
-               eat();
-            }
-        if(health.getValue()<=0)
-        {
-           getWorld().removeObject(this);
-        }
-    }    
-
-    public void move()
+    }  
+    
+    public void moveUp(int speed)
     {
-        if(Greenfoot.isKeyDown("up"))
-        {
-           setLocation(getX(), getY()-4);
+        setLocation(getX(), getY()-speed);
+        setRotation(-15);
+    }
+    
+    public void moveDown(int speed)
+    {
+        setLocation(getX(), getY()+speed);
+        setRotation(15);
+    }
+    
+    public void moveRight(int speed)
+    {
+        move(speed);
+    }
+    
+    public void moveLeft(int speed)
+    {
+        move(-speed);
+    }
+    
+    public void moveTo(int x, int y, int speed)
+    {
+       if(getX() == x && getY() == y)
+       {
+           setRotation(0);
+           return;
+       }
+       
+       turnTowards(x, y);
+       move(speed);
+       
+       if(getY() > y)
+       {
            setRotation(-15);
-        }
-        else 
-            if(Greenfoot.isKeyDown("down"))
-            {
-                setLocation(getX(), getY()+4);
-                setRotation(15);
-            }
-            else
-                setRotation(0);
-    
-        if(Greenfoot.isKeyDown("right") && getX() < getWorld().getWidth()/2)
-          {
-              move(4);
-            }
-            else if(Greenfoot.isKeyDown("left"))
-                {
-                    move(-4);
-                }
+       }
+       else if(getY() < y)
+       {
+           setRotation(15);
+       }
+       else
+       {
+           setRotation(0);
+       }    
     }
     
-    public void eat()
+    public void rotationInit()
     {
-        food food=(food)getOneIntersectingObject(food.class);
-      
-        points(food.getPoints());
-        health(food.getHealth());
-      
-        if(isTouching(Bad.class))
-        {
-            Greenfoot.playSound("Ew.mp3");
-        }
-        else
-            if(isTouching(Good.class))
-            {
-                if(!getObjectsInRange(800, Enemy.class).isEmpty())
-                {
-                     Enemy enemy = getObjectsInRange(800, Enemy.class).get(0);
-                     enemy.exist=false;
-                    }
-                 Greenfoot.playSound("miaw.mp3");
-            }  
-      
-            //Enemy fod=getObjectsInRange(800, Enemy.class).get(0);
-        removeTouching(food.class);
+        setRotation(0);
     }
     
-    public void health(int hit)
+    public int getWidth()
     {
-        health.add(hit);
-        if(health.getValue()<0)
-        {
-            health.setValue(0);
-        }
+        return getImage().getWidth();
     }
     
-    public void points(int hit)
+    public int getHeight()
     {
-        points.add(hit);
-        if(points.getValue()<0)
-        {
-            points.setValue(0);
-        }
+        return getImage().getHeight();
     }
+    
+    public boolean isLookStraight()
+    {
+        if(getRotation()!=0)
+        {
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean isLookUp()
+    {
+        if(getRotation() == 360-15)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean isLookDown()
+    {
+        if(getRotation() == 15)
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public Actor getObjectInFront(int x, java.lang.Class<?> cls)
+    {
+        if(x > getX())
+        {
+            return getOneObjectAtOffset(x - getX(), 0, cls);
+        }
+        return null;
+    }
+    
+
 }

@@ -21,8 +21,8 @@ public class CustomFont
     public static GreenfootImage drawString(String str, Color color, String font, float size)
     {
         // put your code here 
-        int strLength = (str.length() + 2) * (int)size;
-        GreenfootImage img = new GreenfootImage(strLength-650, (int)size+20);
+        int strLength = str.length() * (int)size;
+        GreenfootImage img = new GreenfootImage(strLength, (int)size);
         img.setColor(color);
         img.setFont(getFont(font, size));
         img.drawString(str, 0, (int)size);

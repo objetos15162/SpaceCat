@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=CatGame
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ CatGame\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=CatGame()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Cat\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=world
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ touching()
+comment5.params=
+comment5.target=void\ move()
+comment6.params=
+comment6.target=void\ eat()
+comment7.params=hit
+comment7.target=void\ health(int)
+comment8.params=hit
+comment8.target=void\ points(int)
+numComments=9

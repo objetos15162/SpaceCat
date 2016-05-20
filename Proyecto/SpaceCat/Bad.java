@@ -27,12 +27,17 @@ public class Bad extends food
         setImage(image.get(typeFood));
         
         if(typeFood<1)
+        {
             setValue(value.get(typeFood), 0);
+        }
         else
+        {
             setValue(0, value.get(typeFood));
+        }
             
         setSpeed(4);
     }
+    
     
     /**
      * Act - do whatever the Bad wants to do. This method is called whenever

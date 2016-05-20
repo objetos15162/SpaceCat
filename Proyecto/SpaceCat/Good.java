@@ -23,16 +23,19 @@ public class Good extends food
         value.add(1);
         value.add(5);
         value.add(10);
-
         
         int typeFood = Greenfoot.getRandomNumber(image.size());
         
         setImage(image.get(typeFood));
         
         if(typeFood<2)
+        {
             setValue(value.get(typeFood), 0);
+        }
         else
+        {
             setValue(0, value.get(typeFood));
+        }
             
         setSpeed(4);
     }
