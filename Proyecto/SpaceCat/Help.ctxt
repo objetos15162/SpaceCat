@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Help
+comment0.text=\r\n\ Class\ Help.\r\n\ It\ contains\ image\ Help.\r\n\ @author\ (Jessica\ Ortiz)\ \r\n
+comment1.params=
+comment1.target=Help()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Help\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=int\ getWidth()
+comment3.text=\r\n\ @return\ the\ size\ in\ X\ image.\r\n
+comment4.params=
+comment4.target=boolean\ isOutOnLeft()
+comment4.text=\r\n\ @return\ boolean\ \r\n\ This\ method\ indicates\ if\ the\ image\ is\ out.\r\n
+comment5.params=
+comment5.target=void\ remove()
+comment5.text=\r\n\ This\ method\ remove\ the\ image.\r\n
+numComments=6

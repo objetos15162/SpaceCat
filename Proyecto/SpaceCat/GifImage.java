@@ -35,6 +35,7 @@ public class GifImage
     private String file;
     /** Whether the animation is paused or not. */
     private boolean pause;
+   
 
     /**
      * Set the image of the actor. If the image is a normal picture, it will be displayed as normal.
@@ -133,7 +134,6 @@ public class GifImage
         }
         time = System.currentTimeMillis();
     }
-
 
     /**
      * Class GifDecoder - Decodes a GIF file into one or more frames. <br><br>

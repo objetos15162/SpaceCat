@@ -2,28 +2,45 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Enemy here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * This is the class enemy.
+ * This contains the methods for moving, actor appears
+ * and desappear.
+ * Also it contains the turn of actor.
+ * In this class has the method to shoot.
+ * 
+ * @author (Jessica Ortiz) 
  */
 public class Enemy extends Actor
 {
-    GifImage myGif = new GifImage("Pusheen.gif");
-    GifImage myGif2 = new GifImage("PusheenShoot.gif");
+    private GifImage myGif = new GifImage("Pusheen.gif");
+    private GifImage myGif2 = new GifImage("PusheenShoot.gif");
     
-    public boolean exist;
+    private boolean exist;
     private int positionToAtack;
+    private int speed;
+    private int probabilityToShoot;
+    private boolean existe;
     
+    /**
+     * Class constructor...
+     */
     public Enemy()
+    {
+        this(4,4);
+    }
+    
+    public Enemy(int speed, int probabilityToShoot)
     {
         positionToAtack = 660;
         exist = true;
+        this.speed = speed;
+        this.probabilityToShoot = probabilityToShoot;
     }
     
     /**
      * Act - do whatever the Cat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */ 
-
     public void act() 
     {
        setImage(myGif.getCurrentImage());
@@ -47,12 +64,22 @@ public class Enemy extends Actor
        }
     }   
     
+    /**
+     * This method appear the Enemy.
+     * This method performs the movement the cat 
+     * made to appear.
+     */
     public void appear()
     {
         setRotation(-45);
-        move(-4); 
+        move(-speed); 
     }
     
+    /**
+     * This method desappear the Enemy.
+     * This method performs the movement the cat 
+     * made to desappear.
+     */
     public void disappear()
     {
         if(getY() < getWorld().getHeight()/2)
@@ -65,22 +92,31 @@ public class Enemy extends Actor
         }
         if(isAtEdge())
         {
-            getWorld().removeObject(this);
+            CatWorld world= getWorldOfType(CatWorld.class);
+            world.enemyIsDead(this);
         }
     }
     
+    /**
+     * This method move the Enemy while in CatWorld.
+     * Muves Up and Down.
+     */
     public void move()
     {
         if(getRotation()==15)
         {
-            setLocation(getX(), getY()-2);
+            setLocation(getX(), getY()-speed);
         }
         else 
         {
-            setLocation(getX(), getY()+2);
+            setLocation(getX(), getY()+speed);
         }
     }
     
+    /**
+     * This class perform a slight turn 
+     * the actor does when moved Up and Down.
+     */
     public void turn()
     {
         int timeToMove = Greenfoot.getRandomNumber(300);
@@ -95,19 +131,37 @@ public class Enemy extends Actor
                     }
     }
     
+    /**
+     * This class performs the shoot.
+     */
     public void shoot()
     {
-       if(!getObjectsInRange(800, Cat.class).isEmpty() && Greenfoot.getRandomNumber(100) < 3)
+       if(!getObjectsInRange(800, Cat.class).isEmpty() && Greenfoot.getRandomNumber(100) < probabilityToShoot)
             {
-                getWorld().addObject(new bullet(), getX(), getY());
+                getWorld().addObject(new Bullet(speed), getX(), getY());
             }  
     }
     
+    /**
+     * Este metodo regresa un bolean si 
+     * existe o no el enemigo.
+     * @return boolean false o true.
+     */
+    public boolean exist()
+    {
+        return exist;
+    }
     
-    
-
-    
-    
+    /**
+     * Este metodo mete el valor que tiene
+     * el booleano.
+     * @param exist booleano que representa
+     * un true o false.
+     */
+    public void exist(boolean exist)
+    {
+        this.exist = exist;
+    }
     
     
 }

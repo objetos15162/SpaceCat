@@ -1,16 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
- * Write a description of class Cat here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta clase contiene todo lo relacionado 
+ * con el gato.
+ * Movimiento, velocidad, tamaño, etc.
+ * @author (Jessica Ortiz) 
  */
 public class Cat extends Actor
 {
-    GifImage myGif = new GifImage("NyanCat.gif");
+    private GifImage myGif = new GifImage("NyanCat.gif");
     
     public Cat()
     {
+        setImage(myGif.getCurrentImage());
     }
     
     public void act() 
@@ -18,28 +19,58 @@ public class Cat extends Actor
         setImage(myGif.getCurrentImage());
     }  
     
+    /**
+     * Este metodo hace el movimiento del gato
+     * hacia arriba.
+     * @param speed Representa la velocidad con 
+     * la que hace el movimiento.
+     */
     public void moveUp(int speed)
     {
         setLocation(getX(), getY()-speed);
         setRotation(-15);
     }
     
+    /**
+     * Este metodo hace el movimiento del gato
+     * hacia abajo.
+     * @param speed Representa la velocidad con 
+     * la que hace el movimiento.
+     */
     public void moveDown(int speed)
     {
         setLocation(getX(), getY()+speed);
         setRotation(15);
     }
     
+    /**
+     * Este metodo hace el movimiento del gato
+     * hacia la derecha.
+     * @param speed Representa la velocidad con 
+     * la que hace el movimiento.
+     */
     public void moveRight(int speed)
     {
         move(speed);
     }
     
+    /**
+     * Este metodo hace el movimiento del gato
+     * hacia la izquierda.
+     * @param speed Representa la velocidad con 
+     * la que hace el movimiento.
+     */
     public void moveLeft(int speed)
     {
         move(-speed);
     }
     
+    /**
+     * @param x representa la posicion en direccion a X.
+     * @param y representa la posicion en direccion a y.
+     * @param speed representa la velocidad.
+     * Este metodo se encarga de mover al gato en diagonal.
+     */
     public void moveTo(int x, int y, int speed)
     {
        if(getX() == x && getY() == y)
@@ -65,21 +96,38 @@ public class Cat extends Actor
        }    
     }
     
+    /**
+     * Este metodo mete el valor de la posicion.
+     */
     public void rotationInit()
     {
         setRotation(0);
     }
     
+    /**
+     * Este metodo regresa el tamaño de la imagen a lo ancho.
+     * @return getImaage().getWidth() representa el tamaño.
+     */
     public int getWidth()
     {
         return getImage().getWidth();
     }
     
+    /**
+     * Este metodo regresa el tamaño de la altura de la imagen.
+     * @return getImaage().getHeight() representa el tamaño.
+     */
     public int getHeight()
     {
         return getImage().getHeight();
     }
     
+    /**
+     * Este metodo verifica si el gato esta mirando
+     * hacie el frente.
+     * Regresa un boolean.
+     * @param boolean representa un false o true.
+     */
     public boolean isLookStraight()
     {
         if(getRotation()!=0)
@@ -89,6 +137,11 @@ public class Cat extends Actor
         return true;
     }
     
+    /**
+     * Regresa un booleando si esta o no mirando 
+     * el gato hacia arriba.
+     * @param boolen false o true.
+     */
     public boolean isLookUp()
     {
         if(getRotation() == 360-15)
@@ -98,6 +151,11 @@ public class Cat extends Actor
         return false;
     }
     
+    /**
+     * Regresa un booleando si esta o no mirando 
+     * el gato hacia abajo.
+     * @param boolen false o true.
+     */
     public boolean isLookDown()
     {
         if(getRotation() == 15)
@@ -107,14 +165,23 @@ public class Cat extends Actor
         return false;
     }
     
-    public Actor getObjectInFront(int x, java.lang.Class<?> cls)
+    /**
+     * Regresa un booleando si se encuentra un
+     * Label frente al gato.
+     * @param boolen false o true.
+     */
+    public boolean isLabelInFront(int x, Label label)
     {
-        if(x > getX())
+        Actor actor = getOneObjectAtOffset(x, 0, Label.class);
+        if( actor != null && actor.equals(label))
         {
-            return getOneObjectAtOffset(x - getX(), 0, cls);
+            return true;
         }
-        return null;
+        return false;
     }
     
-
+    public void currentImageGif()
+    {
+        setImage(myGif.getCurrentImage());
+    }
 }

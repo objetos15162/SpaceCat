@@ -2,16 +2,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * 
- * This class contains the actor Asteroid
- * This actor is an obstacle in the game
- * 
+ * This class contains the actor Asteroid.
+ * This actor is an obstacle in the game.
+ * It contains the damage caused and the poins
+ * detracts player.
+ * @author (Jessica Ortiz).
  */
-public class Asteroid extends food
+public class Asteroid extends Item
 {
-    
+    /**
+     * Constructor for objects of class Asteroid.
+     */
     public Asteroid()
     {
-        setSpeed(5);
+        this(5);
+    }
+    
+    public Asteroid(int speed)
+    {
+        super(speed);
+        setValue(-10, -20);
     }
     
     /**

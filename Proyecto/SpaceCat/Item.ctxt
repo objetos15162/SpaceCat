@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\r\n\ Esta\ clase\ contiene\ todos\ los\ Item\ que\ iran\r\n\ apareciendo\ a\ lo\ largo\ del\ juego.\r\n\ \r\n\ @author\ (Jessica\ de\ Jesus\ Ortiz\ Tobias)\ \r\n
+comment1.params=
+comment1.target=Item()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Food.\r\n
+comment2.params=speed
+comment2.target=Item(int)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ food\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment4.params=health\ points
+comment4.target=void\ setValue(int,\ int)
+comment4.text=\r\n\ @param\ health\ representa\ la\ vida.\r\n\ @param\ point\ representa\ los\ puntos\r\n\ Mete\ los\ valores\ de\ los\ puntos\ y\ la\ vida.\r\n
+comment5.params=
+comment5.target=int\ getPoints()
+comment5.text=\r\n\ Regresa\ el\ valor\ que\ tiene\ los\ puntos.\r\n\ @return\ points\ Representa\ los\ puntos.\r\n
+comment6.params=
+comment6.target=int\ getHealth()
+comment6.text=\r\n\ Regresa\ el\ valor\ que\ tiene\ la\ vida.\r\n\ @return\ health\ Representa\ la\ vida.\r\n
+comment7.params=speed
+comment7.target=void\ setSpeed(int)
+comment7.text=\r\n\ @param\ speed\ Representa\ la\ velocidad.\r\n\ Mete\ el\ valor\ de\ la\ velocidad.\r\n
+comment8.params=
+comment8.target=int\ getSpeed()
+comment8.text=\r\n\ Regresa\ el\ valor\ que\ tiene\ la\ velocidad.\r\n\ @return\ speed\ Representa\ la\ velocidad.\r\n
+numComments=9

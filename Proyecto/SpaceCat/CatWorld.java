@@ -1,21 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * Este mundo es el entorno de juego.
  * 
  * @author (Jessica de Jesus Ortiz Tobias) 
- * @version (a version number or a date)
  */
 public class CatWorld extends SpaceWorld
 {
+    private CatGame cat;
+    private Record record;
     private int level;
+ 
+    private int timeObstacles;
+    private int typeOfObstacle;
+    private boolean spawnObstacles;
     
-    private int timeLimit;
+    private int timeEnemy;
+    private int speedEnemy;
+    private int probabilityToShoot;
+    
     private int timeFood;
-
+    private int probabilityOfFood;
+    private int speedFood;
     private boolean spawnFood;
-    public boolean spawnEnemy;
-    
     
     /**
      * Constructor for objects of class MyWorld.
@@ -24,11 +31,30 @@ public class CatWorld extends SpaceWorld
     public CatWorld (int bgX, int bgY)
     {    
         super(bgX, bgY);   
+       
         loadSong("song2.mp3");
-        timeLimit = 10;
-        timeFood = 2;
+        
+        record = new Record();
+        
+        level = 0;
+        
+        probabilityOfFood = 30;
+        
+        speedFood = 4;
+        
+        timeEnemy = 0;
+        timeFood = 0;
+        timeObstacles=0;
+        
+        speedEnemy = 4;
+        probabilityToShoot = 1;
+        
+        typeOfObstacle = 0;
+        
         spawnFood = false;
-        prepare();
+        spawnObstacles = false;
+        
+        prepare();      
     }
 
     /**
@@ -37,66 +63,215 @@ public class CatWorld extends SpaceWorld
      */
     private void prepare()
     {
-        Cat cat = new Cat();
-        addObject(cat,75,297);
-        playSong();
+        cat = new CatGame();
+        addObject(cat,75,300);
+        
+        playSong(40);
+        
+        getTimeSeconds().setPrefix("Time: ");
+        addObject(getTimeSeconds(), 150, 50);
     }
     
     public void act()
     {
         scrollLeftBackground();
         time();
-        
-        if(timeCount%timeFood == 0 && spawnFood == false)
+        timeOfSpawns();
+        timeToAppear();
+        sequence();
+        appearEnhacer();
+        if(getObjects(Cat.class).isEmpty())
         {
-            appearsFood();
-            spawnFood = true;
+            if(getObjects(Label.class).isEmpty())
+            {
+                addObject(new Label("Press Enter", 40), getWidth()/2, getHeight()/2-50);
+                addObject(new Label("To Exit", 40), getWidth()/2, getHeight()/2+50);
+            }
+            if(isKeyOncePress("enter"))
+            {
+                record.showImage();
+                record.save(getTimeSeconds().getValue(), cat.getPoints());
+                stopSong();
+                Greenfoot.setWorld(new Menu());
+                
+            }
         }
-        appearsEnemy();
+    }
+    /**
+     * Este metodo se encarga de la secuencia
+     * de como iran apareciendo los Item.
+     */
+    public void sequence()
+    {
+        if(timeEnemy == 2)
+        {
+            spawnFood = true;
+            timeFood=0;
+        }
+        
+        if(timeEnemy == 20)
+        {
+            spawnObstacles = true;
+            timeObstacles=0;
+            int random = Greenfoot.getRandomNumber(3);
+            if( random == 0)
+            {
+                typeOfObstacle = 1;
+            }
+            else if( random == 1)
+            {
+                typeOfObstacle = 0;
+            }
+            else 
+            {
+                typeOfObstacle = 3;
+            }
+        }
     }
     
+    /**
+     * Este mtodo incrementa los contadores 
+     * de los Item y del Enemy.
+     */
+    public void timeOfSpawns()
+    {
+        if(isOneSecond())
+        {
+            timeObstacles++;
+            timeEnemy++;
+        }
+        
+        if(isOneDSecond())
+        {
+            timeFood++;
+        }
+    }
+    
+    /**
+     * Este metodo se encarga del tiempo en 
+     * que apareceran los Item y el Enemy.
+     */
+    public void timeToAppear()
+    {
+        if(timeFood == 4 && spawnFood)
+        {
+             appearsFood();
+             timeFood = 0;
+        }
+
+        if(timeObstacles == 3 && spawnObstacles)
+        {
+            appearsObstacle(typeOfObstacle);
+            timeObstacles = 0;
+        }
+        
+        if(timeEnemy == 40)
+        {
+            appearsEnemy();
+        }
+    }
+    
+    /**
+     * Este metodo se encarga de aparecer la comida,
+     * y los adiere.
+     */
     public void appearsFood()
     {
-        food food ;
-        int appear = Greenfoot.getRandomNumber(3);
+        Item food ;
+        int appear = Greenfoot.getRandomNumber(100);
       
-        if( appear == 2)    
+        if( appear < probabilityOfFood )    
            {
-               food = new Bad();
+               food = new Bad(speedFood);
             }
         else              
             {
-                food = new Good();
+                food = new Good(speedFood);
             }  
            
-        addObject(food, getWidth(), Greenfoot.getRandomNumber(getHeight()));
+        addObject(food, getWidth() +20, Greenfoot.getRandomNumber(getHeight()));
+        
     }
     
-    public void appearsObstacle()
+    /**
+     * Este metodo se encarga de aparecer
+     * la fruta que sirve como Bonus en el juego.
+     */
+    public void appearEnhacer()
     {
-        food food;
-        int appear = Greenfoot.getRandomNumber(3);
-      
-        if( appear == 2)    
-           {
-               food = new Asteroid();
-            }
-        else            
-            {
-                food = new Worm();
-            }
-        addObject(food, getWidth(), Greenfoot.getRandomNumber(getHeight()));
-    }
-    
-    public void appearsEnemy()
-    {
-        if(timeCount == 5)
+        if(!getObjects(Enemy.class).isEmpty() && Greenfoot.getRandomNumber(40) == 1 && getTimeDSeconds().getValue() == 2 && getObjects(Enhacer.class).isEmpty())
         {
-            if(getObjects(Enemy.class).isEmpty())
-            {
-                addObject(new Enemy(),getWidth(),100);
-            }
-            timeCount = 0;
+           addObject(new Enhacer(4), getWidth() +20, Greenfoot.getRandomNumber(getHeight()));
         }
     }
+    
+    /**
+     * @param obstacle variable para identificar 
+     * los Asteroides y los Worms.
+     * Este metodo se encarga de aparecer los 
+     * obstaculos.
+     */
+    public void appearsObstacle(int obstacle)
+    {
+        Item obstacles;
+        int appear = 0;
+        
+        if(obstacle == 3)
+        appear = Greenfoot.getRandomNumber(3);
+      
+        if( obstacle == 0 || appear == 2 || appear == 3)    
+           {
+              obstacles = new Asteroid(speedEnemy);
+               addObject(obstacles, getWidth() +50, Greenfoot.getRandomNumber(getHeight()));
+           }
+           
+        if ( obstacle == 1 || appear == 1 || appear == 3)           
+           {
+               obstacles = new Worm(speedEnemy);
+               addObject(obstacles, getWidth() +50, Greenfoot.getRandomNumber(getHeight()));
+           } 
+        
+    }
+    
+    /**
+     * Este metodo se encarga de aparecer
+     * al Enemy.
+     */
+    public void appearsEnemy()
+    {
+            if(getObjects(Enemy.class).isEmpty())
+            {
+                addObject(new Enemy(speedEnemy, probabilityToShoot),getWidth(),100);
+            }
+    }
+    
+    /**
+     * @param enemy
+     * Este metodo checa si el enemigo esta
+     * muerto.
+     * Aumenta la dificultad del juego cada
+     * vez que muere.
+     * 
+     */
+    public void enemyIsDead(Actor enemy)
+    {
+        timeEnemy = 0;
+        removeObject(enemy);
+        level++;
+        if(level % 2 == 0)
+        {
+            probabilityOfFood++;
+        }
+        if(level % 20 == 0)
+        {
+            speedFood++;
+            speedEnemy++;
+        }
+        if(level % 10 == 0)
+        {
+            speedFood++;
+            probabilityToShoot++;
+        }
+    }
+    
 }

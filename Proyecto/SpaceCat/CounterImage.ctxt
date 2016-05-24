@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=CounterImage
+comment0.text=\r\n\ \r\n\ Esta\ clase\ se\ encarga\ de\ contar\ la\ vida\ \r\n\ del\ jugador.\ \r\n\ La\ vida\ esta\ representada\ por\ una\ imagen.\r\n\ @author\ (Jessica\ Ortiz)\ \r\n
+comment1.params=
+comment1.target=CounterImage()
+comment1.text=\r\n\ Class\ constructor...\r\n
+comment2.params=valueImage\ valueMax
+comment2.target=CounterImage(int,\ int)
+comment3.params=
+comment3.target=void\ upDateImage()
+comment3.text=\r\n\ Este\ metodo\ hace\ que\ aparsca\ la\ imagen\ \r\n\ q\ representara\ las\ vidas\ y\ le\ asigna\ su\ valor.\r\n
+numComments=4

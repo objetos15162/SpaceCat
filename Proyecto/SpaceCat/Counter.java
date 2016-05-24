@@ -56,7 +56,6 @@ public class Counter extends Actor
         target = 0;
         this.prefix = prefix;
         fontColor = new Color(255,255,255);
-        updateImage();
     }
     
     /**
@@ -120,7 +119,7 @@ public class Counter extends Actor
     /**
      * Update the image on screen to show the current value.
      */
-    private void updateImage()
+    protected void updateImage()
     {
         GreenfootImage text = CustomFont.drawString(prefix + String.format("%05d", value), fontColor, "8-bit",15);
         

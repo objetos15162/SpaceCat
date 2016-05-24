@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Animation
+comment0.text=\r\n\ Esta\ clase\ se\ encarga\ de\ la\ animacion\ en\r\n\ la\ presentacion.\r\n\ \r\n\ @author\ (Jessica\ Ortiz)\ \r\n
+comment1.params=
+comment1.target=Animation()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Animation.\r\n\ \r\n
+comment2.params=
+comment2.target=void\ prepare()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ animation()
+comment4.text=\r\n\ Este\ metodo\ hace\ toda\ la\ animacion.\r\n
+comment5.params=
+comment5.target=void\ appearTitle()
+comment5.text=\r\n\ Este\ metodo\ solo\ se\ encarga\ de\ aparecer\r\n\ el\ titulo\ del\ juego.\r\n
+comment6.params=
+comment6.target=void\ moveCat()
+comment6.text=\r\n\ Este\ metodo\ se\ encarga\ de\ hacer\ el\ \r\n\ movimiento\ del\ gato\ a\ lo\ largo\ de\ \r\n\ la\ presentacion.\r\n
+comment7.params=
+comment7.target=void\ appearLabels()
+comment7.text=\r\n\ Este\ metodo\ se\ encarga\ de\ aparecer\r\n\ los\ labels\ a\ lo\ largo\ de\ la\ presentacion.\r\n
+comment8.params=
+comment8.target=void\ scapeAnimation()
+comment8.text=\r\n\ Este\ metodo\ es\ una\ alternativa\ \r\n\ para\ iniciar\ rappido,\ brincandose\r\n\ la\ presentaci\u00F3n\ y\ llendo\ directo\r\n\ al\ menu.\r\n
+numComments=9

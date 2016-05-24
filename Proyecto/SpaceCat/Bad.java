@@ -1,15 +1,24 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Bad here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ *
+ * This class contains the badFood.
+ * Esta comida proboca daño.
+ * @author (Jessica Ortiz) 
  */
-public class Bad extends food
+public class Bad extends Item
 {
+    /**
+     * Constructor for objects of class Bad.
+     */
     public Bad()
     {
+        super();
+    }
+    
+    public Bad(int speed)
+    {
+        super(speed);
         ArrayList<String> image;
         image = new ArrayList<String>();
         image.add("brocoli.png");
@@ -34,8 +43,6 @@ public class Bad extends food
         {
             setValue(0, value.get(typeFood));
         }
-            
-        setSpeed(4);
     }
     
     
@@ -45,7 +52,6 @@ public class Bad extends food
      */
     public void act() 
     {
-        // Add your action code here.
         super.act();
     }    
 }

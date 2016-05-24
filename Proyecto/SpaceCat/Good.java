@@ -1,15 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Good here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Esta clase contiene comida buena.
+ * Esta comida te da puntos o vida.
+ * @author (Jessica Ortiz) 
  */
-public class Good extends food
+public class Good extends Item
 {   
+    /**
+     * Constructor for objects of class Good.
+     */
     public Good()
     {
+        super();
+    }
+    
+    public Good(int speed)
+    {
+        super(speed);
         ArrayList<String> image;
         image = new ArrayList<String>();
         image.add("fresa.png");
@@ -24,7 +32,11 @@ public class Good extends food
         value.add(5);
         value.add(10);
         
-        int typeFood = Greenfoot.getRandomNumber(image.size());
+        int typeFood;
+        
+        do{
+            typeFood = Greenfoot.getRandomNumber(image.size());
+        }while((typeFood == 0 || typeFood == 1) && Greenfoot.getRandomNumber(20) != 1);
         
         setImage(image.get(typeFood));
         
@@ -36,8 +48,7 @@ public class Good extends food
         {
             setValue(0, value.get(typeFood));
         }
-            
-        setSpeed(4);
+
     }
     
     /**
@@ -46,7 +57,6 @@ public class Good extends food
      */
     public void act() 
     {
-        // Add your action code here.
         super.act();
     }    
     

@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=CustomFont
 comment0.text=\r\n\ Custom\ Font.\r\n\ \r\n\ @author\ Lollygag\r\n\ @version\ 2014\r\n
-comment1.params=str\ color\ font\ size
-comment1.target=greenfoot.GreenfootImage\ drawString(java.lang.String,\ java.awt.Color,\ java.lang.String,\ float)
+comment1.params=str\ font\ size
+comment1.target=greenfoot.GreenfootImage\ drawString2(java.lang.String,\ java.lang.String,\ float)
 comment1.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
-comment2.params=name\ size
-comment2.target=java.awt.Font\ getFont(java.lang.String,\ float)
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
-numComments=3
+comment2.params=str\ color\ font\ size
+comment2.target=greenfoot.GreenfootImage\ drawString(java.lang.String,\ java.awt.Color,\ java.lang.String,\ float)
+comment3.params=name\ size
+comment3.target=java.awt.Font\ getFont(java.lang.String,\ float)
+comment3.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=4

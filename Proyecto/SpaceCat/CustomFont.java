@@ -18,6 +18,12 @@ public class CustomFont
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
+    public static GreenfootImage drawString2(String str, String font, float size)
+    {
+        // put your code here 
+      return drawString(str, Color.WHITE , font, size);
+    }
+    
     public static GreenfootImage drawString(String str, Color color, String font, float size)
     {
         // put your code here 
